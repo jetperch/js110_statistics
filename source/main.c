@@ -19,9 +19,7 @@
 #include <signal.h>
 #include <windows.h>
 
-
-static int quit_ = 0;
-
+static volatile int quit_ = 0;
 
 void sigint_handler(int event) {
     (void) event;
@@ -29,6 +27,7 @@ void sigint_handler(int event) {
 }
 
 void on_statistics(void * user_data, struct js110_statistics_s * statistics) {
+    // CAUTION: called from JS110 thread.
     (void) user_data;
     printf("> %u: %llu samples, %f A, %f V, %f, W, %f C, %f J\n",
            statistics->serial_number,
@@ -39,7 +38,6 @@ void on_statistics(void * user_data, struct js110_statistics_s * statistics) {
            statistics->charge,
            statistics->energy);
 }
-
 
 int main(int argc, char * argv[]) {
     (void) argc;

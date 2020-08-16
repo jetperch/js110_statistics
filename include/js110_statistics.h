@@ -71,7 +71,12 @@ struct js110_statistics_s {
  * @brief The function called for each statistics update.
  *
  * @param user_data The arbitrary data.
- * @param statistics The statistics update structure.
+ * @param statistics The statistics update structure.  The pointer
+ *      is on loan for the duration of the function call.
+ *
+ * This function is called from the js110_statistics thread.
+ * The function is responsible for performing any necessary thread
+ * synchronization.
  */
 typedef void (*js110_statistics_cbk)(void * user_data, struct js110_statistics_s * statistics);
 

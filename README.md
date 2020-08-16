@@ -30,7 +30,7 @@ The standard
 [Joulescope UI](https://www.joulescope.com/download) are great. 
 We recommend trying those first. 
 
-However, they do have a limitations for some scenarios.
+However, they do have limitations for some scenarios.
 The Joulescope UI always streams data from the JS110 at the full 2,000,000
 samples per second. That's a lot of data, which limits the number of 
 Joulescopes that you can connect to a single host. For long-term testing 
@@ -38,9 +38,11 @@ and qualification, you need Joulescope's fast autoranging and accurate
 statistics, but not the full-rate data. This library and application 
 allows much more efficient data collection since the statistics are 
 computed on the instrument. This library can support up to 127 Joulescopes 
-attached to single host computer. It has a simple API consisting of just
+attached to single host computer. 
+
+This library has a simple API consisting of just
 two functions and a callback, all written in C, so it is easy to integrate
-into nearly any other program.  Finally, it is also relatively simple,
+into nearly any other program.  The code is also relatively simple,
 so you can translate it to your own programming language to remove any
 C dependency.
 
